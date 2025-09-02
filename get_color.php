@@ -28,7 +28,7 @@ function getDominantColors($imageUrl, $db): ?array
                 // getimagesize() juga bisa bekerja dengan URL
                 if (@getimagesize($imageUrl)) {
                     // Ambil 8 warna paling dominan dari gambar
-                    $palette = ColorThief::getPalette($imageUrl, colorCount: 2);
+                    $palette = ColorThief::getPalette($imageUrl, 2);
                 } else {
                     $error = 'URL yang dimasukkan bukan gambar yang valid.';
                 }

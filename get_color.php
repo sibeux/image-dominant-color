@@ -21,12 +21,12 @@ function getDominantColors($imageUrl, $db): ?array
     if (!empty($imageUrl)) {
         $imageUrl = filter_var($imageUrl, FILTER_SANITIZE_URL);
 
+        // gak perlu divalidasi, karena pakai dir local server
         // Validasi URL
-        if (filter_var($imageUrl, FILTER_VALIDATE_URL)) {
-            // gak perlu divalidasi, karena pakai dir local server
-        } else {
-            $error = 'Format URL yang Anda masukkan tidak valid.';
-        }
+        // if (filter_var($imageUrl, FILTER_VALIDATE_URL)) {
+        // } else {
+        //     $error = 'Format URL yang Anda masukkan tidak valid.';
+        // }
 
         try {
             // Cek header gambar untuk memastikan itu benar-benar gambar

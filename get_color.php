@@ -23,22 +23,24 @@ function getDominantColors($imageUrl, $db): ?array
 
         // Validasi URL
         if (filter_var($imageUrl, FILTER_VALIDATE_URL)) {
-            try {
-                // Cek header gambar untuk memastikan itu benar-benar gambar
-                // getimagesize() juga bisa bekerja dengan URL
-                if (@getimagesize($imageUrl)) {
-                    // Ambil 8 warna paling dominan dari gambar
-                    $palette = ColorThief::getPalette($imageUrl, 2);
-                } else {
-                    $error = 'URL yang dimasukkan bukan gambar yang valid.';
-                }
-            } catch (NotReadableException $e) {
-                $error = 'Gagal memuat gambar dari URL. Pastikan URL dapat diakses secara publik.';
-            } catch (Exception $e) {
-                $error = 'Terjadi kesalahan: ' . $e->getMessage();
-            }
+            // gak perlu divalidasi, karena pakai dir local server
         } else {
             $error = 'Format URL yang Anda masukkan tidak valid.';
+        }
+
+        try {
+            // Cek header gambar untuk memastikan itu benar-benar gambar
+            // getimagesize() juga bisa bekerja dengan URL
+            if (@getimagesize($imageUrl)) {
+                // Ambil 8 warna paling dominan dari gambar
+                $palette = ColorThief::getPalette($imageUrl, 2);
+            } else {
+                $error = 'URL yang dimasukkan bukan gambar yang valid.';
+            }
+        } catch (NotReadableException $e) {
+            $error = 'Gagal memuat gambar dari URL. Pastikan URL dapat diakses secara publik.';
+        } catch (Exception $e) {
+            $error = 'Terjadi kesalahan: ' . $e->getMessage();
         }
     }
 
@@ -65,7 +67,7 @@ function getDominantColors($imageUrl, $db): ?array
 
     if (!empty(($bg_color)) && !empty($text_color)) {
         $originalImageUrl = '';
-        if (str_contains($imageUrl, '555/cybeat/false/image')){
+        if (str_contains($imageUrl, '555/cybeat/false/image')) {
             if (preg_match("#/stream/([^/]+)/#", $imageUrl, $matches)) {
                 $fileId = $matches[1];
                 $originalImageUrl = "https://drive.google.com/file/d/" . $fileId . "/view?usp=drive_link";

@@ -97,14 +97,14 @@ function getDominantColors($imageUrl, $db): ?array
             die("Error inserting dominant: " . $stmt_dominant->error);
         }
         $stmt_dominant->close();
-        log_message("Warna dominan berhasil disimpan untuk URL: " . $imageUrl);
+        log_message("[SUCCESS] Warna dominan berhasil disimpan untuk URL: " . $imageUrl);
         // Kembalikan warna dalam format array asosiatif
         return [
             'bg_color' => $bg_color,
             'text_color' => $text_color
         ];
     } else {
-        log_message("Warna dominan tidak ditemukan untuk URL: " . $imageUrl);
+        log_message("[ERROR] Warna dominan tidak ditemukan untuk URL: " . $imageUrl);
         return null;
     }
 }

@@ -67,7 +67,7 @@ function getDominantColors($imageUrl, $db): ?array
 
     if (!empty(($bg_color)) && !empty($text_color)) {
         $originalImageUrl = '';
-        if (str_contains($imageUrl, '555/cybeat/false/image')) {
+        if (strpos($imageUrl, '555/cybeat/false/image') != false) {
             if (preg_match("#/stream/([^/]+)/#", $imageUrl, $matches)) {
                 $fileId = $matches[1];
                 $originalImageUrl = "https://drive.google.com/file/d/" . $fileId . "/view?usp=drive_link";

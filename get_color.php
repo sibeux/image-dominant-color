@@ -72,6 +72,8 @@ function getDominantColors($imageUrl, $db): ?array
                 $fileId = $matches[1];
                 $originalImageUrl = "https://drive.google.com/file/d/" . $fileId . "/view?usp=drive_link";
             }
+        } else if (strpos($imageUrl, 'cdn.sibeux.my.id') != false) {
+            $originalImageUrl = parse_url($imageUrl, PHP_URL_PATH);
         } else {
             $originalImageUrl = $imageUrl;
         }

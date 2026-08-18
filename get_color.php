@@ -79,7 +79,7 @@ function getDominantColors($imageUrl, $db): ?array
             $originalImageUrl = $imageUrl;
         }
         $stmt_dominant = $db->prepare(
-            "INSERT INTO dominant_color (image_url, bg_color, text_color) VALUES (?, ?, ?) 
+            "INSERT INTO dominant_colors (image_url, bg_color, text_color) VALUES (?, ?, ?) 
             -- Gunakan perintah INSERT ... ON DUPLICATE KEY UPDATE. 
             -- Perintah ini secara cerdas akan melakukan INSERT jika datanya baru, atau UPDATE jika datanya sudah ada. 
             -- Ini sering disebut operasi \"UPSERT\" (Update or Insert)

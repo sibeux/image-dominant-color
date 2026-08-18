@@ -75,6 +75,9 @@ function getDominantColors($imageUrl, $db): ?array
         } else if (strpos($imageUrl, 'cdn.sibeux.my.id') != false) {
             $rawUrl = parse_url($imageUrl, PHP_URL_PATH);
             $originalImageUrl = "cdncloudflare" . $rawUrl;
+        } else if (strpos($imageUrl, 'cover_url') != false) {
+            parse_str(parse_url($imageUrl, PHP_URL_QUERY), $query);
+            $originalImageUrl = $query['cover_url'];
         } else {
             $originalImageUrl = $imageUrl;
         }

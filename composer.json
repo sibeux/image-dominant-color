@@ -1,5 +1,14 @@
 {
+    "name": "sibeux/image-dominant-color",
+    "description": "Script PHP to get dominant color from image by its URL",
+    "type": "library",
     "require": {
         "ksubileau/color-thief-php": "^2.0"
-    }
+    },
+    "autoload": {
+        "files": [
+            "get_color.php"
+        ]
+    },
+    "minimum-stability": "dev"
 }
